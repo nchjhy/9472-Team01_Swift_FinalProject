@@ -58,5 +58,22 @@ struct TipCalculator: View {
         .padding(30)
     }
 
+    // Function to update the tip and total after tip slider has been set
+     func updateTipAndTotal() {
+        guard let amount = Double(enteredAmount) else {
+            print("Invalid Amount")
+            return
+        }
+     
+       guard let tip = calculateTip(of: amount, with: tipSlider) else {
+            print("Bill amount or tip cannot be negative")
+            return
+        }
+        
+        tipAmount = tip
+        totalAmount = amount + tipAmount
+    }
+
+
 }
 
