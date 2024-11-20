@@ -34,6 +34,17 @@ struct TipCalculator: View {
                     updateTipAndTotal()
                 }
 
+            // Tip Amount Display
+            VStack {
+                Text(tipAmount, format: .currency(code: "PHP"))
+                    .font(.title.bold())
+
+                Text("Tip")
+                    .foregroundColor(.secondary)
+                    .font(.caption)
+            }
+            .padding(.top, 20)
+
     // VStack for the Total
      VStack {
                 Text(totalAmount, format: .currency(code: "PHP"))
