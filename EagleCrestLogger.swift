@@ -28,6 +28,22 @@ func registerResident() {
     }
 }
 
+// Function to remove a resident
+func removeResident() {
+    print("Enter Resident ID to remove:", terminator: "")
+    if let residentID = readLine() {
+        if let index = residents.firstIndex(of: residentID) {
+            residents.remove(at: index)
+            print("Resident \(residentID) removed successfully.")
+        } else {
+            print("Resident ID not found. Please try again.")
+        }
+    } else {
+        print("Invalid input. Please try again.")
+    }
+}
+
+
 // Flag to control the loop
 var isValidChoice = false
 // Main program loop until a valid choice is made
