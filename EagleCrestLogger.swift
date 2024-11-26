@@ -6,3 +6,10 @@ print("This program allows security guards to log residents and guests entering 
 var residents: [String] = []
 // Data structure to store entries (residents and guests)
 var logEntries: [(id: String, isGuest: Bool, timestamp: Date)] = []
+
+// Function to log a guest entry
+func logGuestEntry() {
+    logEntries.append((id: "Guest", isGuest: true, timestamp: Date()))
+    print("Guest entry logged successfully.")
+}
+
