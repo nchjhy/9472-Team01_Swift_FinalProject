@@ -1,11 +1,21 @@
 import SwiftUI
 
+// Helper struct for tip calculation logic
+struct Calculation{
+    func calculateTip(amount: Double, tipPercentage: Double) -> Double? {
+        guard amount >= 0 && tipPercentage >= 0 else { return nil }
+        let tipPercentage = tipPercentage / 100
+        return amount * tipPercentage
+    }
+}
+
 struct TipCalculator: View {
     @State private var enteredAmount: String = ""
     @State private var tipAmount: Double = 0
     @State private var totalAmount: Double = 0
     @State private var tipSlider: Double = 15
-  
+    private let helper = TipCalculatorHelper()   // Initialize helper for calculations
+
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             TipCalculator()
@@ -58,14 +68,14 @@ struct TipCalculator: View {
         .padding(30)
     }
 
-    // Function to update the tip and total after tip slider has been set
-     func updateTipAndTotal() {
+      func updateTipAndTotal() {
         guard let amount = Double(enteredAmount) else {
             print("Invalid Amount")
             return
         }
-     
-       guard let tip = calculateTip(of: amount, with: tipSlider) else {
+        
+        // Use the helper function for calculating the tip
+        guard let tip = calculation.calculateTip(amount: amount, tipPercentage: tipSlider) else {
             print("Bill amount or tip cannot be negative")
             return
         }
@@ -73,7 +83,7 @@ struct TipCalculator: View {
         tipAmount = tip
         totalAmount = amount + tipAmount
     }
-
+}
 
     // Calculates the tip amount based on the entered amount and tip percentage, ensuring both are non-negative.
     func calculateTip(of enteredAmount: Double, with tip: Double) -> Double? {
