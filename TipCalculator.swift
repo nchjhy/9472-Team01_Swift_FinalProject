@@ -44,29 +44,26 @@ struct TipCalculator: View {
                     updateTipAndTotal()
                 }
 
-            // Tip Amount Display
-            VStack {
-                Text(tipAmount, format: .currency(code: "PHP"))
-                    .font(.title.bold())
-
-                Text("Tip")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
+            struct DisplayAmountView: View {
+                var title: String
+                var amount: Double
+    
+                var body: some View {
+                    VStack {
+                        Text(amount, format: .currency(code: "PHP"))
+                            .font(.title.bold())
+                        Text(title)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
+                    .padding(.top, 20)
+                }
             }
-            .padding(.top, 20)
-
-    // VStack for the Total
-     VStack {
-                Text(totalAmount, format: .currency(code: "PHP"))
-                    .font(.title.bold())
-                
-                Text("Total")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-            }
+            .padding(30)
         }
-        .padding(30)
-    }
+
+        DisplayAmountView(title: "Tip", amount: tipAmount)
+        DisplayAmountView(title: "Total", amount: totalAmount)
 
       func updateTipAndTotal() {
         guard let amount = Double(enteredAmount) else {
