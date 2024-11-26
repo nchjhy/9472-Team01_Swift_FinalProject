@@ -28,4 +28,42 @@ func registerResident() {
     }
 }
 
+// Flag to control the loop
+var isValidChoice = false
+// Main program loop until a valid choice is made
+while !isValidChoice {
+    // Display menu options
+    print("\nTo get started, enter a number to access a feature:")
+    print("1. Register a Resident")
+    print("2. Remove a Resident")
+    print("3. Log a Resident Entry")
+    print("4. Log a Guest Entry")
+    print("5. Exit")
+    // Reading user input
+    if let userInput = readLine(), let option = Int(userInput) {
+        switch option {
+        case 1:
+            print("You chose to register a new resident.")
+            registerResident() // Register a resident
+        case 2:
+            print("You chose to remove a resident.")
+            removeResident() // Remove a resident
+        case 3:
+            print("You chose to log a resident entry.")
+            logResidentEntry() // Log a resident entry
+        case 4:
+            print("You chose to log a guest entry.")
+            logGuestEntry() // Log a guest entry
+        case 5:
+            print("Exiting the program. Goodbye!")
+            isValidChoice = true // Break the loop to exit the program
+        default:
+            print("Invalid option. Please enter a number from 1 to 5.")
+        }
+    } else {
+        print("Invalid input. Please enter a valid number.")
+    }
+}
+
+
 
