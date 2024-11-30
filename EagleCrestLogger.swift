@@ -13,6 +13,22 @@ func logGuestEntry() {
     print("Guest entry logged successfully.")
 }
 
+// Function to log a resident entry
+func logResidentEntry() {
+    print("Enter Resident ID to log entry:", terminator: "")
+    if let residentID = readLine() {
+        if residents.contains(residentID) {
+            logEntries.append((id: residentID, isGuest: false, timestamp: Date()))
+            print("Entry logged for Resident \(residentID).")
+        } else {
+            print("Resident ID not found. Please register the resident first.")
+        }
+    } else {
+        print("Invalid input. Please try again.")
+    }
+}
+
+
 // Function to register a new resident
 func registerResident() {
     print("Enter Resident ID to register:", terminator: "")
