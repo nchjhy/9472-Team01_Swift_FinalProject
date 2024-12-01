@@ -21,7 +21,7 @@ on:
 
 jobs:
   analyze:
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: ${{ matrix.os }}
     permissions:
       security-events: write
       packages: read
@@ -33,6 +33,10 @@ jobs:
       matrix:
         include:
           - language: swift
+            os: macos-latest
+            build-mode: autobuild
+          - language: other-lang
+            os: ubuntu-latest
             build-mode: autobuild
 
     steps:
@@ -45,7 +49,7 @@ jobs:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
 
-      # Optional: Add a manual build step if autobuild fails
+      - name: Manual Build Step
       - if: matrix.build-mode == 'manual'
         shell: bash
         run: |
