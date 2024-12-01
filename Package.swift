@@ -1,2 +1,2 @@
-// swift-tools-version: 5.10
+swift-tools-version: 5.10
 
