@@ -62,8 +62,12 @@ struct TipCalculator: View {
             .padding(30)
         }
 
-        DisplayAmountView(title: "Tip", amount: tipAmount)
-        DisplayAmountView(title: "Total", amount: totalAmount)
+        // Placed it within a VStack layout
+        VStack {
+            DisplayAmountView(title: "Tip", amount: tipAmount)
+            DisplayAmountView(title: "Total", amount: totalAmount)
+        }
+
 
       func updateTipAndTotal() {
         guard let amount = Double(enteredAmount) else {
@@ -88,9 +92,5 @@ struct TipCalculator: View {
         let tipPercentage = tip / 100
         return enteredAmount * tipPercentage
      }
-
-
-
-
 }
 
