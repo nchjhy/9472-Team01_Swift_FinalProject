@@ -62,6 +62,7 @@ struct TipCalculator: View {
             .padding(30)
         }
 
+
         // Placed it within a VStack layout
         VStack {
             DisplayAmountView(title: "Tip", amount: tipAmount)
