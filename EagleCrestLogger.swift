@@ -16,7 +16,7 @@ func logGuestEntry() {
 // Function to log a resident entry
 func logResidentEntry() {
     print("Enter Resident ID to log entry:", terminator: "")
-    if let residentID = readLine() {
+    if let residentID = readLine(), ! residentID.trimmingCharacters(in:.whitespacesandNewlines).isEmpty {
         if residents.contains(residentID) {
             logEntries.append((id: residentID, isGuest: false, timestamp: Date()))
             print("Entry logged for Resident \(residentID).")
