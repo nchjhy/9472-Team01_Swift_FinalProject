@@ -50,8 +50,13 @@ func removeResident() {
     print("Enter Resident ID to remove:", terminator: "")
     if let residentID = readLine() {
         if let index = residents.firstIndex(of: residentID) {
-            residents.remove(at: index)
-            print("Resident \(residentID) removed successfully.")
+            print("Are you sure you want to remove Resident \(residentID)? (yes/no)", terminator: " ")
+                if let confirmation = readLine(), confirmation.lowercased() == "yes" {
+                    residents.remove(at: index)
+                    print("Resident \(residentID) removed successfully.")
+                } else {
+                    print("Operation canceled.")
+                }
         } else {
             print("Resident ID not found. Please try again.")
         }
