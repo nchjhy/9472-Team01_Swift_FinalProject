@@ -59,11 +59,9 @@ func removeResident() {
     }
 }
 
-
-// Flag to control the loop
-var isValidChoice = false
 // Main program loop until a valid choice is made
-while !isValidChoice {
+func start() {
+while true {
     // Display menu options
     print("\nTo get started, enter a number to access a feature:")
     print("1. Register a Resident")
@@ -96,6 +94,6 @@ while !isValidChoice {
         print("Invalid input. Please enter a valid number.")
     }
 }
-
+}
 
 
