@@ -68,9 +68,9 @@ struct TipCalculator: View {
             DisplayAmountView(title: "Tip", amount: tipAmount)
             DisplayAmountView(title: "Total", amount: totalAmount)
         }
-
-
-      func updateTipAndTotal() {
+}
+    // Updates the tip and total based on the tip slider
+    func updateTipAndTotal() {
         guard let amount = Double(enteredAmount.trimingCharacters(in: 
         whitespacesAdnNewLines)), amount > 0 else {
             print("Please enter a valid positive number for the amount.")
@@ -86,7 +86,6 @@ struct TipCalculator: View {
         tipAmount = tip
         totalAmount = amount + tipAmount
     }
-}
 
     // Calculates the tip amount based on the entered amount and tip percentage, ensuring both are non-negative.
     func calculateTip(of enteredAmount: Double, with tip: Double) -> Double? {
