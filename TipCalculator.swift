@@ -71,8 +71,9 @@ struct TipCalculator: View {
 
 
       func updateTipAndTotal() {
-        guard let amount = Double(enteredAmount) else {
-            print("Invalid Amount")
+        guard let amount = Double(enteredAmount.trimingCharacters(in: 
+        whitespacesAdnNewLines)), amount > 0 else {
+            print("Please enter a valid positive number for the amount.")
             return
         }
         
