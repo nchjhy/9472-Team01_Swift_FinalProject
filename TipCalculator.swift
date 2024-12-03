@@ -14,7 +14,7 @@ struct TipCalculator: View {
     @State private var tipAmount: Double = 0
     @State private var totalAmount: Double = 0
     @State private var tipSlider: Double = 15
-    private let helper = TipCalculatorHelper()   // Initialize helper for calculations
+    private let calculation = Calculation()
 
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
