@@ -9,6 +9,7 @@ struct Calculation{
     }
 }
 
+
 struct TipCalculator: View {
     @State private var enteredAmount: String = ""
     @State private var tipAmount: Double = 0
