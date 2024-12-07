@@ -9,6 +9,21 @@ struct Calculation{
     }
 }
 
+struct DisplayAmountView: View {
+    var title: String
+    var amount: Double
+
+    var body: some View {
+        VStack {
+            Text(amount, format: .currency(code: "PHP"))
+                .font(.title.bold())
+            Text(title)
+                .foregroundColor(.secondary)
+                .font(.caption)
+        }
+        .padding(.top, 20)
+    }
+}
 
 struct TipCalculator: View {
     @State private var enteredAmount: String = ""
@@ -45,21 +60,7 @@ struct TipCalculator: View {
                     updateTipAndTotal()
                 }
 
-            struct DisplayAmountView: View {
-                var title: String
-                var amount: Double
-    
-                var body: some View {
-                    VStack {
-                        Text(amount, format: .currency(code: "PHP"))
-                            .font(.title.bold())
-                        Text(title)
-                            .foregroundColor(.secondary)
-                            .font(.caption)
-                    }
-                    .padding(.top, 20)
-                }
-            }
+            
             .padding(30)
         }
 
