@@ -75,7 +75,9 @@ func viewLogs() {
         print("Logged Entries:")
         for (index, entry) in logEntries.enumerated() {
             let type = entry.isGuest ? "Guest" : "Resident"
-            let formattedDate = DateFormatter.localizedString(from: entry.timestamp, dateStyle: .short, timeStyle: .short)
+           func formatDate(_ date: Date) -> String {
+            return DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short)
+        }
             print("\(index + 1). ID: \(entry.id), Type: \(type), Timestamp: \(formattedDate)")
         }
     }
@@ -89,7 +91,9 @@ func saveLogsToFile() {
     
     for entry in logEntries {
         let type = entry.isGuest ? "Guest" : "Resident"
-        let formattedDate = DateFormatter.localizedString(from: entry.timestamp, dateStyle: .short, timeStyle: .short)
+         func formatDate(_ date: Date) -> String {
+            return DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short)
+        }
         fileContent += "ID: \(entry.id), Type: \(type), Timestamp: \(formattedDate)\n"
     }
     
