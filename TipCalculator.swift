@@ -1,11 +1,11 @@
 import SwiftUI
 
 // Helper struct for tip calculation logic
-struct Calculation{
-    func calculateTip(amount: Double, tipPercentage: Double) -> Double? {
-        guard amount >= 0 && tipPercentage >= 0 else { return nil }
-        let tipPercentage = tipPercentage / 100
-        return amount * tipPercentage
+struct TipCalculatorHelper {
+    func calculateTip(forAmount amount: Double, withTipPercentage tipPercentage: Double) -> Double? {
+        guard amount >= 0, tipPercentage >= 0 else { return nil }
+        let percentage = tipPercentage / 100
+        return amount * percentage
     }
 }
 
