@@ -37,7 +37,7 @@ func registerResident() {
     print("Enter Resident ID to register:", terminator: "")
     if let residentID = readLine() {
         if !residents.contains(residentID) {
-            residents.append(residentID)
+            residents.insert(residentID)
             print("Resident \(residentID) registered successfully.")
         } else {
             print("Resident \(residentID) is already registered.")
