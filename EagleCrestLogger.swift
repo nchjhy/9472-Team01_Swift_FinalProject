@@ -67,6 +67,40 @@ func removeResident() {
     }
 }
 
+// Function to display logged entries
+func viewLogs() {
+    if logEntries.isEmpty {
+        print("No entries logged yet.")
+    } else {
+        print("Logged Entries:")
+        for (index, entry) in logEntries.enumerated() {
+            let type = entry.isGuest ? "Guest" : "Resident"
+            let formattedDate = DateFormatter.localizedString(from: entry.timestamp, dateStyle: .short, timeStyle: .short)
+            print("\(index + 1). ID: \(entry.id), Type: \(type), Timestamp: \(formattedDate)")
+        }
+    }
+}
+
+// Function to save logs to a file
+func saveLogsToFile() {
+    let fileName = "logEntries.txt"
+    let filePath = FileManager.default.currentDirectoryPath + "/" + fileName
+    var fileContent = "Log Entries:\n"
+    
+    for entry in logEntries {
+        let type = entry.isGuest ? "Guest" : "Resident"
+        let formattedDate = DateFormatter.localizedString(from: entry.timestamp, dateStyle: .short, timeStyle: .short)
+        fileContent += "ID: \(entry.id), Type: \(type), Timestamp: \(formattedDate)\n"
+    }
+    
+    do {
+        try fileContent.write(toFile: filePath, atomically: true, encoding: .utf8)
+        print("Logs saved to \(filePath).")
+    } catch {
+        print("Failed to save logs: \(error.localizedDescription)")
+    }
+}
+
 // Main program loop until a valid choice is made
 func start() {
 while true {
@@ -76,30 +110,39 @@ while true {
     print("2. Remove a Resident")
     print("3. Log a Resident Entry")
     print("4. Log a Guest Entry")
-    print("5. Exit")
+    print("5. View Logs")
+    print("6. Save Logs to File")
+    print("7. Exit")
+
     // Reading user input
-    if let userInput = readLine(), let option = Int(userInput) {
-        switch option {
-        case 1:
-            print("You chose to register a new resident.")
-            registerResident() // Register a resident
-        case 2:
-            print("You chose to remove a resident.")
-            removeResident() // Remove a resident
-        case 3:
-            print("You chose to log a resident entry.")
-            logResidentEntry() // Log a resident entry
-        case 4:
-            print("You chose to log a guest entry.")
-            logGuestEntry() // Log a guest entry
-        case 5:
-            print("Exiting the program. Goodbye!")
-            isValidChoice = true // Break the loop to exit the program
-        default:
-            print("Invalid option. Please enter a number from 1 to 5.")
-        }
-    } else {
-        print("Invalid input. Please enter a valid number.")
+        if let userInput = readLine(), let option = Int(userInput) {
+            switch option {
+            case 1:
+                print("You chose to register a new resident.")
+                registerResident()
+            case 2:
+                print("You chose to remove a resident.")
+                removeResident()
+            case 3:
+                print("You chose to log a resident entry.")
+                logResidentEntry()
+            case 4:
+                print("You chose to log a guest entry.")
+                logGuestEntry()
+            case 5:
+                print("You chose to view logs.")
+                viewLogs()
+            case 6:
+                print("You chose to save logs to a file.")
+                saveLogsToFile()
+            case 7:
+                print("Exiting the program. Goodbye!")
+                return
+            default:
+                print("Invalid option. Please enter a number from 1 to 7.")
+            }
+        } else {
+            print("Invalid input. Please enter a valid number.")
     }
 }
 }
