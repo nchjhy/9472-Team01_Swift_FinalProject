@@ -11,9 +11,9 @@ var logEntries: [(id: String, isGuest: Bool, timestamp: Date)] = []
 
 // Function to log a guest entry
 func logGuestEntry() {
-    let uniqueGuestID = "Guest-\(UUID().uuidString)"
-    logEntries.append((id: uniqueGuestID, isGuest: true, timestamp: Date()))
-    print("Guest entry logged successfully with ID\(uniqueGuestID)")
+    let guestID = "Guest-\(UUID().uuidString)"
+    entryLog.append((id: guestID, isGuest: true, timestamp: Date()))
+    print("Guest entry logged successfully with ID: \(guestID)")
 }
 
 // Function to log a resident entry
