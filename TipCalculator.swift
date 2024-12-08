@@ -45,11 +45,14 @@ struct TipCalculator: View {
                 Text("Enter Bill Amount")
                     .foregroundColor(.secondary)
                 
-                TextField("0.00", text: $enteredAmount)
+                TextField("Enter amount", text: $enteredAmount)
                     .font(.system(size: 70, weight: .semibold, design: .rounded))
-                    #if os(iOS)
                     .keyboardType(.decimalPad)
-                    #endif
+                    .onChange(of: enteredAmount) { 
+                        newValue in enteredAmount = newValue.filter { 
+                            $0.isNumber || $0 == "." 
+                        }
+                    }
                     .multilineTextAlignment(.center)
             }
             
