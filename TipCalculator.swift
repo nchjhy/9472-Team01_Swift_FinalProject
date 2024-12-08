@@ -59,13 +59,13 @@ struct TipCalculator: View {
             
             Text("Tip: \(tipSlider, specifier: "%.0f")%")
                  
-            Slider(value: $tipSlider, in: 0...100, step: 1)
-                .onChange(of: tipSlider) { _ in
-                    updateTipAndTotal()
-                }
-
-            
-            .padding(30)
+            Slider(value: $tipSlider, in: 0...100, step: 1) {
+                Text("Tip Percentage")
+            }
+            .onChange(of: tipSlider) { _ in
+                updateTipAndTotal()
+            }
+            .padding(.horizontal, 30)
         }
 
 
