@@ -76,20 +76,19 @@ struct TipCalculator: View {
 }
     // Updates the tip and total based on the tip slider
     func updateTipAndTotal() {
-        guard let amount = Double(enteredAmount.trimingCharacters(in: 
-        whitespacesAdnNewLines)), amount > 0 else {
-            print("Please enter a valid positive number for the amount.")
-            return
-        }
-        
-        // Use the helper function for calculating the tip
-        guard let tip = calculation.calculateTip(amount: amount, tipPercentage: tipSlider) else {
-            print("Bill amount or tip cannot be negative")
-            return
-        }
-        
-        tipAmount = tip
-        totalAmount = amount + tipAmount
+    guard let amount = Double(enteredAmount.trimmingCharacters(in: .whitespacesAndNewlines)), amount > 0 else {
+        print("Please enter a valid positive number for the amount.")
+        return
     }
+
+    guard let tip = calculation.calculateTip(forAmount: amount, withTipPercentage: tipSlider) else {
+        print("Bill amount or tip percentage cannot be negative.")
+        return
+    }
+
+    tipAmount = tip
+    totalAmount = amount + tip
+    }
+
 }
 
