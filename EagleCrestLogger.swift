@@ -85,8 +85,8 @@ func viewLogs() {
 
 // Function to save logs to a file
 func saveLogsToFile() {
-    let fileName = "logEntries.txt"
-    let filePath = FileManager.default.currentDirectoryPath + "/" + fileName
+    let logFileName = "logEntries.txt"
+    let filePath = FileManager.default.currentDirectoryPath + "/" + logFileName
     var fileContent = "Log Entries:\n"
     
     for entry in logEntries {
