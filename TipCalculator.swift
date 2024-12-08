@@ -39,42 +39,48 @@ struct TipCalculator: View {
         }
     }
 
-    //Body of the view that specifies the UI layout and content
     var body: some View {
-        VStack(spacing: 40) {
-            VStack {
+        VStack(spacing: 20) {
+            // Input Section
+            VStack(spacing: 10) { 
                 Text("Enter Bill Amount")
                     .foregroundColor(.secondary)
                 
                 TextField("Enter amount", text: $enteredAmount)
                     .font(.system(size: 70, weight: .semibold, design: .rounded))
                     .keyboardType(.decimalPad)
-                    .onChange(of: enteredAmount) { 
-                        newValue in enteredAmount = newValue.filter { 
-                            $0.isNumber || $0 == "." 
-                        }
+                    .onChange(of: enteredAmount) { newValue in
+                        enteredAmount = newValue.filter { $0.isNumber || $0 == "." }
                     }
                     .multilineTextAlignment(.center)
             }
-            
-            Text("Tip: \(tipSlider, specifier: "%.0f")%")
-                 
-            Slider(value: $tipSlider, in: 0...100, step: 1) {
-                Text("Tip Percentage")
-            }
-            .onChange(of: tipSlider) { _ in
-                updateTipAndTotal()
-            }
-            .padding(.horizontal, 30)
-        }
+            .padding() 
 
+            // Tip Slider Section
+            VStack(spacing: 10) {
+                Text("Tip: \(tipSlider, specifier: "%.0f")%")
+                
+                Slider(value: $tipSlider, in: 0...100, step: 1) {
+                    Text("Tip Percentage")
+                }
+                .onChange(of: tipSlider) { _ in
+                    updateTipAndTotal()
+                }
+                .padding(.horizontal, 30)
+            }
+            .padding() 
 
-        // Placed it within a VStack layout
-        VStack {
-            DisplayAmountView(title: "Tip", amount: tipAmount)
-            DisplayAmountView(title: "Total", amount: totalAmount)
+            // Output Section
+            VStack(spacing: 20) { 
+                DisplayAmountView(title: "Tip", amount: tipAmount)
+                DisplayAmountView(title: "Total", amount: totalAmount)
+            }
+            .padding() 
         }
-}
+        .padding(.horizontal, 20) 
+        .background(Color(.systemBackground)) 
+    }
+
     // Updates the tip and total based on the tip slider
     func updateTipAndTotal() {
     guard let amount = Double(enteredAmount.trimmingCharacters(in: .whitespacesAndNewlines)), amount > 0 else {
