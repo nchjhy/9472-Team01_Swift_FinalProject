@@ -107,18 +107,23 @@ func saveLogsToFile() {
 
 // Main program loop until a valid choice is made
 func start() {
-while true {
-    // Display menu options
-    print("\nTo get started, enter a number to access a feature:")
-    print("1. Register a Resident")
-    print("2. Remove a Resident")
-    print("3. Log a Resident Entry")
-    print("4. Log a Guest Entry")
-    print("5. View Logs")
-    print("6. Save Logs to File")
-    print("7. Exit")
-
-    // Reading user input
+    let menu = """
+    
+    To get started, enter a number to access a feature:
+    1. Register a Resident
+    2. Remove a Resident
+    3. Log a Resident Entry
+    4. Log a Guest Entry
+    5. View Logs
+    6. Save Logs to File
+    7. Exit
+    """
+    
+    while true {
+        // Display menu
+        print(menu)
+        
+        // Reading user input
         if let userInput = readLine(), let option = Int(userInput) {
             switch option {
             case 1:
@@ -147,8 +152,8 @@ while true {
             }
         } else {
             print("Invalid input. Please enter a valid number.")
+        }
     }
-}
 }
 
 
