@@ -32,9 +32,10 @@ struct TipCalculator: View {
     @State private var tipSlider: Double = 15
     private let calculation = Calculation()
 
-    struct ContentView_Previews: PreviewProvider {
+    struct TipCalculator_Previews: PreviewProvider {
         static var previews: some View {
             TipCalculator()
+                .previewDevice("iPhone 14 Pro")
         }
     }
 
