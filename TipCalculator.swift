@@ -1,3 +1,5 @@
+// TipCalculator
+
 import SwiftUI
 
 // Helper struct for tip calculation logic
