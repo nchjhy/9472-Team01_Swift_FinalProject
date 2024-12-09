@@ -1,3 +1,5 @@
+// EagleCrestLogger class
+
 import Foundation
 // Welcome message and introduction
 print("Welcome to the Eagle Crest Phase 3 Entry Logging System!")
