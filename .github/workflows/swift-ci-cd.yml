@@ -25,7 +25,7 @@ jobs:
         run: brew install tailor
 
       - name: Run Tailor for Code Quality (EagleCrestLogger)
-        run: tailor lint EagleCrestLogger.swift
+        run: tailor EagleCrestLogger.swift
 
       - name: Build with Foundation
         run: swift build -v
@@ -51,7 +51,7 @@ jobs:
         run: brew install tailor
 
       - name: Run Tailor for Code Quality (TipCalculator)
-        run: tailor lint TipCalculator.swift
+        run: tailor TipCalculator.swift
 
       - name: Build with SwiftUI
         run: swift build -v
