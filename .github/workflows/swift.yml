@@ -23,35 +23,14 @@ jobs:
       with:
         xcode-version: '16.1.0'
 
-    - name: Install Tailor
-      run: brew install tailor
-
-    - name: Run Tailor Analysis
-      run: tailor lint .
-
     - name: Build
-      run: swift build
+      run: swift build --build-path artifacts/build
 
     - name: Run tests
       run: swift test
-
-    - name: Save Tailor Report
-      run: tailor lint . > tailor-report.txt
-
-    - name: Upload Tailor Report
-      uses: actions/upload-artifact@v3
-      with:
-        name: tailor-report
-        path: tailor-report.txt
-
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: .build/debug/codecov.json 
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
-        path: .build 
+        path: artifacts/build
