@@ -1,5 +1,5 @@
 // EagleCrestLogger class
-// Test Comment
+// Test Comment Again
 
 import Foundation
 // Welcome message and introduction
