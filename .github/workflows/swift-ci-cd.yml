@@ -1,0 +1,68 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: Swift CI Pipeline for EagleCrestLogger and TipCalculator
+
+on:
+  push:
+    branches: [ "development" ]
+    paths:
+      - 'EagleCrestLogger.swift'
+      - 'TipCalculator.swift'
+  pull_request:
+    branches: [ "development" ]
+
+jobs:
+  eaglecrest:
+    name: Build and Test EagleCrestLogger (Foundation)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          swift-version: "6.0"
+
+      - name: Install Tailor
+        run: brew install tailor
+
+      - name: Run Tailor for Code Quality (EagleCrestLogger)
+        run: tailor EagleCrestLogger.swift
+
+      - name: Build with Foundation
+        run: swift build -v
+
+      - name: Test with Foundation
+        run: swift test --enable-code-coverage
+
+      - name: Upload EagleCrestLogger Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: eaglecrest-artifacts
+          path: .build
+
+  tipcalculator:
+    name: Build and Test TipCalculator (SwiftUI)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Tailor
+        run: brew install tailor
+
+      - name: Run Tailor for Code Quality (TipCalculator)
+        run: tailor TipCalculator.swift
+
+      - name: Build with SwiftUI
+        run: swift build -v
+
+      - name: Test with SwiftUI
+        run: swift test --enable-code-coverage
+
+      - name: Upload TipCalculator Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: tipcalculator-artifacts
+          path: .build
