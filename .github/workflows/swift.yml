@@ -22,6 +22,12 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '16.1.0'
+    
+    - name: Install SwiftLint
+      run: brew install swiftlint
+
+    - name: Run SwiftLint
+      run: swiftlint
 
     - name: Build
       run: swift build --build-path artifacts/build
