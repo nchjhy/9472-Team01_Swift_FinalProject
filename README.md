@@ -44,8 +44,8 @@ For help, please contact the project maintainers.
 ## Contributing
 This project is not open for contributions.
 
-## Authors and acknowledgment
-Developed by the **AfterAcads Team**.  
+## Authors and Acknowledgment
+Developed by the **KalApache Team**.  
 - Abitan, Julianne Therese
 - Aquino, Jan Dolby
 - Cahanap, Jerilyn Louise 
@@ -53,6 +53,6 @@ Developed by the **AfterAcads Team**.
 - Mandac, Minette Victoria
 - San Miguel, Chloe’ Lee
 
-## Project status
+## Project Status
 This project has been submitted and graded.
 
