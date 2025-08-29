@@ -17,7 +17,7 @@ This project is a Swift-based iOS application developed as a final project. It d
 ## Installation & Setup
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/Swift-FinalProject-Team01.git
+   git clone https://github.com/yourusername/9472-Team01_Swift_FinalProject.git
    cd Swift-FinalProject-Team01
 
 2. **Open in Xcode**
